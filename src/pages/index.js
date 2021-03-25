@@ -19,6 +19,7 @@ const IndexPage = ({ data: { products } }) => (
         <li key={product.id}>
           <h3>{product.name}</h3>
           <p>${product.price}</p>
+          <img src={product.photo.url} />
         </li>
       ))}
     </ul>
@@ -32,7 +33,7 @@ export const pageQuery = graphql`
         id
         name
         price
-        images {
+        photo {
           url
         }
       }

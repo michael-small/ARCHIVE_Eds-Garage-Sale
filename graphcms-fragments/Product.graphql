@@ -6,7 +6,7 @@ fragment Product on Product {
   updatedAt(variation: COMBINED)
   publishedAt(variation: COMBINED)
   name
-  images {
+  photo {
     ... on Asset {
       remoteTypeName: __typename
       remoteId: id

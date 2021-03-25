@@ -4,7 +4,9 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import { graphql } from "gatsby"
+
+const IndexPage = ({ data: { products } }) => (
   <Layout>
     <SEO title="Home" />
     <h1>Hi Blazek Family</h1>
@@ -12,7 +14,30 @@ const IndexPage = () => (
     <p>
       <Link to="/site-progress/">Go to site progress page</Link> <br />
     </p>
+    <ul>
+      {products.nodes.map(product => (
+        <li key={product.id}>
+          <h3>{product.name}</h3>
+          <p>${product.price}</p>
+        </li>
+      ))}
+    </ul>
   </Layout>
 )
+
+export const pageQuery = graphql`
+  query PostQuery {
+    products: allGraphCmsProduct {
+      nodes {
+        id
+        name
+        price
+        images {
+          url
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage

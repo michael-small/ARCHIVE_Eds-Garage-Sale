@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Ed's Garage Sale`,
@@ -14,13 +16,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // {
-    //   resolve: "gatsby-source-graphcms",
-    //   options: {
-    //     endpoint: process.env.GRAPHCMS_ENDPOINT,
-    //     token: process.env.GRAPHCMS_TOKEN,
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-graphcms",
+      options: {
+        endpoint: process.env.GRAPHCMS_ENDPOINT,
+        token: process.env.GRAPHCMS_TOKEN,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
